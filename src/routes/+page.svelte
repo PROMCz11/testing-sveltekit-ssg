@@ -56,6 +56,8 @@
 <style>
     main {
         min-height: 100vh;
+        background-color: #182D38;
+        color: white;
     }
 
     img {
