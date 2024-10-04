@@ -9,16 +9,35 @@
 
     onMount(() => {
         // scroll(
-        //     animate(".content > div", { opacity: [1, 0] }),
+        //     timeline([
+        //         [".content > div > div > div > div:nth-of-type(1)", { opacity: [0, 1] }],
+        //         [".content > div > div > div > div:nth-of-type(2)", { opacity: [0, 1] }],
+        //         [".content > div > div > div > div:nth-of-type(3)", { opacity: [0, 1] }],
+        //         [".content > div > div > div > div:nth-of-type(4)", { opacity: [0, 1] }]
+        //     ]),
         //     { target: document.querySelector(".content"), offset: ["start start", "end end"] }
         // )
 
         scroll(
             timeline([
-                [".content > div > div > div > div:nth-of-type(1)", { opacity: [0, 1], translateY: ["100%", 0] }],
-                [".content > div > div > div > div:nth-of-type(2)", { opacity: [0, 1], translateY: ["100%", 0] }],
-                [".content > div > div > div > div:nth-of-type(3)", { opacity: [0, 1], translateY: ["100%", 0] }],
-                [".content > div > div > div > div:nth-of-type(4)", { opacity: [0, 1], translateY: ["100%", 0] }]
+                "one",
+                [".content > div > div > div", { translateY: ["40%", "15%"] }],
+                [".content > div > div > div > div:nth-of-type(1)", { opacity: [1, .2] }, { at: "one" }],
+                [".content > div > div > div > div:nth-of-type(2)", { opacity: [.2, 1] }, { at: "one" }],
+                [".content > div > div > div > div:nth-of-type(3)", { opacity: [0, .2] }, { at: "one" }],
+                [".content > div > div > div > div:nth-of-type(4)", { opacity: [0, 0] }, { at: "one" }],
+                "two",
+                [".content > div > div > div", { translateY: ["15%", "-10%"] }],
+                [".content > div > div > div > div:nth-of-type(1)", { opacity: [.2, 0] }, { at: "two" }],
+                [".content > div > div > div > div:nth-of-type(2)", { opacity: [1, .2] }, { at: "two" }],
+                [".content > div > div > div > div:nth-of-type(3)", { opacity: [.2, 1] }, { at: "two" }],
+                [".content > div > div > div > div:nth-of-type(4)", { opacity: [0, .2] }, { at: "two" }],
+                "three",
+                [".content > div > div > div", { translateY: ["-10%", "-35%"] }],
+                [".content > div > div > div > div:nth-of-type(1)", { opacity: [0, 0] }, { at: "three" }],
+                [".content > div > div > div > div:nth-of-type(2)", { opacity: [.2, 0] }, { at: "three" }],
+                [".content > div > div > div > div:nth-of-type(3)", { opacity: [1, .2] }, { at: "three" }],
+                [".content > div > div > div > div:nth-of-type(4)", { opacity: [.2, 1] }, { at: "three" }]
             ]),
             { target: document.querySelector(".content"), offset: ["start start", "end end"] }
         )
@@ -100,12 +119,20 @@
     .content > div > div > div {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        /* gap: 1rem; */
+        /* translate: 0 50%;
+        translate: 0 -50%; */
+        /* translate: 0 40%;
+        translate: 0 15%;
+        translate: 0 -10%;
+        translate: 0 -35%; */
     }
 
     .content > div > div > div > div {
         display: flex;
         align-items: center;
         gap: .5rem;
+
+        height: 100px;
     }
 </style>
